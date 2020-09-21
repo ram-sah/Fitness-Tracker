@@ -1,9 +1,28 @@
-// var express = require('express')
-// var router = express.Router() //Also route can be set as line 3 
-// // const router = require("express").Router();
-// const db = require("../models");
+const express = require('express')
+const router = express.Router()// or
+// const router = require("express").Router();
+const db = require("../models");
 
-// // define the home page route
-// router.get('api/workouts', function (req, res) {
-//   res.send(' ')
-// })
+// sends JSON of all work
+router.get('api/workouts', (req, res) => {
+    db.Work.find()
+        .then(dbWork => {
+            res.json(dbWork);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+//Add new work
+router.post("/api/workouts", ({ body }, res) => {
+    db.Work.create(body)
+    .then(dbWork => {
+        res.json(dbWork);
+    })
+    .catch(err => {
+        res.json(err);
+    });
+});
+
+
+module.exports = router;
