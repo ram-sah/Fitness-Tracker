@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const workSchema = new Schema({
+const workoutSchema = new Schema({
     day: {
         type: Date,
         default: Date.now
     },
-    exercise: [{
+    exercises: [{
         type: {
             type: String
         },
@@ -25,10 +25,25 @@ const workSchema = new Schema({
         },
         sets: {
             type: Number
+        },
+        distance: {
+            type: Number
         }
     }]
-});
+},
+{
+    toJSON:{
+        virtuals: true
+    }
+}
+);
 
-const work = mongoose.model("work", workSchema);
+workoutSchema.virtual("totalDuration").get(function(){
+    return this.exercises.reduce((total, exercise)=>{
+        return total + exercise.duration
+    },0)
+})
 
-module.exports = work;
+const Workout = mongoose.model("Workout", workoutSchema);
+
+module.exports = Workout;
