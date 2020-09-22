@@ -10,14 +10,14 @@ app.use(express.json());
 app.use(express.static("public"));
 // Mongoose connection
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  process.env.MONGODB_URI || 'mongodb://localhost/workoutdb',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
 );
 // routes
-// app.use(require("./routes/api.js"));
+app.use(require("./routes/api.js"));
 app.use(require("./routes/html.js"));
 
 app.listen(PORT, () => {
