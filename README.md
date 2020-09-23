@@ -50,8 +50,15 @@ If you have any questions please contact me at : mohan2036@gmail.com
 
 ## Application-Demo 
 
+![fitness-tracker](https://user-images.githubusercontent.com/64625123/93966625-225e8280-fd33-11ea-962e-c564205cd04c.gif)
 
 
-## Clip: 
+## Application-Clips:-
+
+<img width="640" alt="pic-1" src="https://user-images.githubusercontent.com/64625123/93965260-b1699b80-fd2f-11ea-923f-09a2222ff3c3.png">
+<img width="640" alt="pic-2" src="https://user-images.githubusercontent.com/64625123/93965268-b3335f00-fd2f-11ea-8a0d-1caf1c2b4ba2.png">
+<img width="640" alt="pic-3" src="https://user-images.githubusercontent.com/64625123/93965272-b4fd2280-fd2f-11ea-852f-3795b5f83ec9.png">
+<img width="640" alt="mongodb" src="https://user-images.githubusercontent.com/64625123/93965270-b4648c00-fd2f-11ea-8f03-87bae716b22b.png">
+
 
 
