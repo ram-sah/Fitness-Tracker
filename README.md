@@ -18,7 +18,10 @@ This project is a command-line application. Fitness-Tracker is an Application to
             
 * [Questions](#Questions)
 
+* [Technologies-Used](#Technologies-Used)
+
 * [Demo](#Application-Demo)
+
          
 ## Installation
             
@@ -47,6 +50,14 @@ If you have any questions please contact me at : mohan2036@gmail.com
 ### Repository : [Fitness-Tracker](https://github.com/ram-sah/Fitness-Tracker)
 
 ## Heroku: [Application-link](https://fitness-tracker20.herokuapp.com)
+
+### Technologies-Used
+* Morgan: For HTTP request logger middleware for Node. js.
+* Express: This framework is used for developing Node js applications.
+* Mongoose: is an Object Data Modeling (ODM) library for MongoDB and Node. js. It manages relationships between data.
+* Robo 3T: to Store data locally.
+* Heroku to Deploy Application.
+* MongoDB Atlas to create database online.
 
 ## Application-Demo 
 
