@@ -1,22 +1,23 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()// or
 // const router = require("express").Router();
-const db = require("../models");
+const db = require("../models/work.js");
 // sends JSON of all work
-router.get('/api/workouts', (req, res) => {
-    db.Workout.find()
-        .then(dbWork => {
-            console.log("get all:", dbWork)
-            res.json(dbWork);
-        })
-        .catch(err => {
-            res.json(err);
-        });
+
+db.find({}).then(data => {
+    // console.log("1.)Checking if db is populated");
+    if (data.length === 0) {
+        // console.log("2.)DB is empty");
+        require("../seeders/seed.js");
+    } else {
+     console.log("3.)DB is populated");
+    }
 });
-//Add new work and seed it
-router.post("/api/workouts", ({ body }, res) => {
-    db.Workout.create(body)
+// getLastWorkout()
+router.get('/api/workouts', (req, res) => {
+    db.find()
         .then(dbWork => {
+            // console.log("get all:", dbWork)
             res.json(dbWork);
         })
         .catch(err => {
@@ -26,9 +27,17 @@ router.post("/api/workouts", ({ body }, res) => {
 // Add exercise to a workout, then seeds updated workout
 router.put("/api/workouts/:id", ({ body, params }, res) => {
     // console.log("put:", body, params)
-    db.Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } }, {new:true})
+    db.findByIdAndUpdate(
+        params.id,
+        {
+            $push: { exercises: body }
+        },
+        {
+            new: true,
+            runValidators: true
+        })
         .then((dbWork) => {
-            console.log("works:", dbWork)
+            // console.log("works:", dbWork)
             res.json(dbWork);
         })
         .catch(err => {
@@ -36,10 +45,20 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
             res.json(err);
         });
 });
+//Add new work and seed it
+router.post("/api/workouts", ({ body }, res) => {
+    db.create({})
+        .then(dbWork => {
+            res.json(dbWork);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
 // Send Array of 7 recent workout
 router.get("/api/workouts/range", (req, res) => {
     // console.log("range")
-    db.Workout.find({})
+    db.find({})
         .sort({ _id: -1 })
         .limit(7)
         .then(dbWork => {
@@ -50,4 +69,5 @@ router.get("/api/workouts/range", (req, res) => {
             res.json(err);
         });
 });
+
 module.exports = router;
